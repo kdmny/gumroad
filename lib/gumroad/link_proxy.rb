@@ -5,7 +5,12 @@ module Gumroad
     end
 
     def find(id)
-      Gumroad::Link.new(@session, @session.get("/links/#{id}")['link'])
+      link_obj = @session.get("/links/#{id}")['link']
+      if link_obj.nil?
+        return nil
+      else
+        Gumroad::Link.new(@session, @session.get("/links/#{id}")['link'])
+      end
     end
 
     def all

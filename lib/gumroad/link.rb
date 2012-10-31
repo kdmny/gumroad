@@ -15,6 +15,12 @@ module Gumroad
       self
     end
 
+    def update
+      params = {name: name, url: url, description: description, price: price}
+      @session.put("/links/#{id}", params)
+      self
+    end
+
     def destroy
       @session.delete("/links/#{id}")
     end

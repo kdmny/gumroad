@@ -5,8 +5,8 @@ require 'gumroad/link_proxy'
 
 module Gumroad
   class << self
-    def new(email, password)
-      Gumroad::Session.new(email, password)
+    def new(args)
+        Gumroad::Session.new(args)
     end
   end
 end

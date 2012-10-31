@@ -7,7 +7,7 @@ describe Gumroad do
         with(body: {email: 'foo@bar.com', password: 'foobar'}).
         to_return(status: 200, body: fixture('session'))
     end  
-    
-    specify { Gumroad.new('foo@bar.com', 'foobar').should be_a Gumroad::Session }
+    args = {:email=>'foo@bar.com',:password =>'foobar'} 
+    specify { Gumroad.new(args).should be_a Gumroad::Session }
   end
 end

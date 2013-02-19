@@ -6,7 +6,7 @@ Gumroad is a Ruby wrapper for the Gumroad API.
 Authentication
 --------
 ``` ruby
-client = Gumroad.new(username, password)
+client = Gumroad.new(:email => username, :password => password)
 ```
 
 If you feel the need to, you can revoke the session.

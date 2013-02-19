@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_runtime_dependency 'httparty'
+  s.add_runtime_dependency 'httmultiparty'  
   
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'webmock'

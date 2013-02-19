@@ -20,8 +20,8 @@ module Gumroad
     end
     
     def create(params={})
-      json = @session.post('/links', params)
-      Gumroad::Link.new(@session, json['link'])
+      link = Gumroad::Link.new(@session, params)
+      link.save
     end
   end
 end

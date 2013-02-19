@@ -1,8 +1,9 @@
-require 'httparty'
+require 'httmultiparty'
 
 module Gumroad
   class Session
-    include HTTParty
+    include HTTMultiParty
+    debug_output $stdout
     base_uri 'https://gumroad.com/api/v1'
     attr_accessor :token
 

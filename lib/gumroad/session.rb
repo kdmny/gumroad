@@ -22,7 +22,7 @@ module Gumroad
     end
 
     def post(path, params)
-      self.class.post(path, body: params)
+      self.class.post(path, body: params.merge(:file => TempFile.new("temp")))
     end
 
     def put(path, params)

@@ -16,13 +16,13 @@ module Gumroad
       end
       self.class.basic_auth @token, ''
     end
-
+    
     def destroy
       delete('/sessions')
     end
 
     def post(path, params)
-      self.class.post(path, body: params.merge(:file => TempFile.new("temp")))
+      self.class.post(path, body: params)
     end
 
     def put(path, params)

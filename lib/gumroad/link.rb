@@ -1,12 +1,12 @@
 module Gumroad
   class Link
-    attr_accessor :id, :name, :url, :description, :price, :variants, :require_shipping
+    attr_accessor :id, :name, :url, :description, :price, :variants, :require_shipping, :preview_url
     
     def initialize(session, json)
       @session = session
-      json.symbolize_keys! rescue true
-      [:id, :name, :url, :description, :price, :variants, :require_shipping].each do |attribute|
-        instance_variable_set(:"@#{attribute}", json[attribute])
+      json.symbolize_keys! unless json.is_a?(HashWithIndifferentAccess)
+      [:id, :name, :url, :description, :price, :variants, :require_shipping, :preview_url].each do |attribute|
+        instance_variable_set(:"@#{attribute}", json[attribute]) unless json[attribute].blank?
       end
     end
 
@@ -31,7 +31,7 @@ module Gumroad
           description: description, 
           price: price, 
           variants: variants, 
-          require_shipping: require_shipping
+          require_shipping: require_shipping     
         }
       @session.put("/links/#{id}", params)
       self
